@@ -1,156 +1,404 @@
-![Insurance Portfolio Intelligence — premium exposure, policy lifecycle and data quality](Img/hero.svg)
+<p align="center">
+  <img src="Img/hero.svg" alt="Insurance Portfolio Intelligence" width="100%">
+</p>
 
-# Insurance Portfolio Intelligence
+<h1 align="center">Insurance Portfolio Intelligence</h1>
 
-**A Power BI case study connecting portfolio composition, modeled premium exposure and data-quality review across 10,000 insurance records.**
+<p align="center">
+  <strong>A Power BI case study that transforms policy, customer, product and sales-hierarchy data into clear portfolio and premium decisions.</strong>
+</p>
 
-The central question: **where is premium concentrated, what does the policy mix reveal, and which measures are reliable enough to support a decision?**
+<p align="center">
+  <img src="https://img.shields.io/badge/Power_BI-Executive_Dashboard-F2C811?style=flat-square&logo=powerbi&logoColor=111827" alt="Power BI">
+  <img src="https://img.shields.io/badge/Power_Query-Data_Preparation-0D9488?style=flat-square" alt="Power Query">
+  <img src="https://img.shields.io/badge/DAX-KPI_Modeling-1E3A8A?style=flat-square" alt="DAX">
+  <img src="https://img.shields.io/badge/CSV-7_Source_Tables-475569?style=flat-square" alt="CSV sources">
+  <img src="https://img.shields.io/badge/Status-Completed-16A34A?style=flat-square" alt="Completed">
+</p>
 
-![Power BI](https://img.shields.io/badge/Power_BI-142D42?style=flat-square&logo=powerbi&logoColor=white)
-![Power Query](https://img.shields.io/badge/Power_Query-087F8C?style=flat-square)
-![DAX](https://img.shields.io/badge/DAX-142D42?style=flat-square)
-![CSV](https://img.shields.io/badge/CSV-087F8C?style=flat-square)
-![Insurance Analytics](https://img.shields.io/badge/Insurance_Analytics-142D42?style=flat-square)
-
-[Snapshot](#executive-snapshot) · [Insights](#key-insights) · [Implementation](#technical-implementation) · [Full report](Business Report/insurance-portfolio-business-report.pdf) · [Limitations](#limitations)
+<p align="center">
+  <a href="Dashboard%20Pdf/insurance_dashboard.pdf">📊 Dashboard PDF</a> •
+  <a href="Business%20Report/insurance-portfolio-business-report.pdf">📘 Business Report</a> •
+  <a href="#key-insights">💡 Key Insights</a> •
+  <a href="#technical-implementation">⚙️ Technical Build</a> •
+  <a href="#business-recommendations">🎯 Recommendations</a>
+</p>
 
 <table>
   <tr>
-    <th>Active records</th>
-    <th>Modeled annual premium</th>
-    <th>Modeled premium paid</th>
-    <th>Top three states</th>
-  </tr>
-  <tr>
-    <td align="center"><strong>7,332</strong></td>
-    <td align="center"><strong>$25.43m</strong></td>
-    <td align="center"><strong>$125.72m</strong></td>
-    <td align="center"><strong>33.71%</strong> of annual premium</td>
+    <td align="center" width="20%"><strong>📋 10,000</strong><br><sub>Policy Records</sub></td>
+    <td align="center" width="20%"><strong>✅ 7,332</strong><br><sub>Active Records</sub></td>
+    <td align="center" width="20%"><strong>💳 $25.43M</strong><br><sub>Annual Premium</sub></td>
+    <td align="center" width="20%"><strong>💰 $125.72M</strong><br><sub>Modeled Premium Paid</sub></td>
+    <td align="center" width="20%"><strong>📍 33.71%</strong><br><sub>Top 3 States' Share</sub></td>
   </tr>
 </table>
 
-*Scope: active records in the stored model, matching the report-level filter. Premium paid is calculated from annual premium and payment duration; it is not a verified cash-receipt total.*
+<sub><strong>KPI scope:</strong> premium figures and geographic share use active records in the stored model. Modeled premium paid is calculated from annual premium and payment duration; it is not a verified cash-receipt total.</sub>
 
-## Dashboard preview
+🎬 Dashboard Walkthrough
 
 <p align="center">
-  <img src="Img/dashboard-demo.gif" alt="Walkthrough of the six-page Insurance Portfolio Intelligence dashboard" width="100%" />
+  <a href="Dashboard%20Pdf/insurance_dashboard.pdf">
+    <img src="Img/dashboard-demo.gif" alt="Animated walkthrough of the six-page Insurance Portfolio Intelligence dashboard" width="100%">
+  </a>
 </p>
 
-The report definitions contain six pages: **Portfolio summary**, **Insurance overview**, **Investment & maturity**, **Premium & protection**, **Premium performance**, and **Sales hierarchy**.
+<p align="center">
+  <a href="Dashboard%20Pdf/insurance_dashboard.pdf"><strong>Open the complete six-page dashboard PDF →</strong></a>
+</p>
 
-[View all six dashboard pages](Dashboard Pdf/insurance_dashboard.pdf)
+📊 Dashboard Experience
 
-![Insurance overview dashboard](Img/dashboard/page-2.png)
+The report presents six connected analytical views. Each page answers a different management question while retaining a consistent navigation, filter and KPI system.
 
-*Actual page from the supplied Power BI export. The report pairs every screenshot with its filter context, an explanation of the visuals and management use.*
+<table>
+  <tr>
+    <td width="50%"><a href="Dashboard%20Pdf/insurance_dashboard.pdf"><img src="Img/dashboard/page-1.png" alt="Portfolio summary dashboard"></a></td>
+    <td width="50%"><a href="Dashboard%20Pdf/insurance_dashboard.pdf"><img src="Img/dashboard/page-2.png" alt="Insurance overview dashboard"></a></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Portfolio Summary</strong><br><sub>Policy-level register, headline financial KPIs and portfolio filters</sub></td>
+    <td align="center"><strong>Insurance Overview</strong><br><sub>Status, protection-plan, occupation and state-level portfolio patterns</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><a href="Dashboard%20Pdf/insurance_dashboard.pdf"><img src="Img/dashboard/page-3.png" alt="Investment and maturity dashboard"></a></td>
+    <td width="50%"><a href="Dashboard%20Pdf/insurance_dashboard.pdf"><img src="Img/dashboard/page-4.png" alt="Premium and protection dashboard"></a></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Investment &amp; Maturity</strong><br><sub>Investment-oriented measures, maturity views and policy comparisons</sub></td>
+    <td align="center"><strong>Premium &amp; Protection</strong><br><sub>Premium composition, protection mix and tenure-based exploration</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><a href="Dashboard%20Pdf/insurance_dashboard.pdf"><img src="Img/dashboard/page-5.png" alt="Premium performance dashboard"></a></td>
+    <td width="50%"><a href="Dashboard%20Pdf/insurance_dashboard.pdf"><img src="Img/dashboard/page-6.png" alt="Sales hierarchy dashboard"></a></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Premium Performance</strong><br><sub>Modeled paid and payable premium across selected policy segments</sub></td>
+    <td align="center"><strong>Sales Hierarchy</strong><br><sub>Agent, regional-manager and zonal-manager reporting views</sub></td>
+  </tr>
+</table>
 
-The Premium & protection screenshot uses a 20–25-year tenure range. Premium performance selects **Payable in 10 Years**. Their displayed totals therefore represent different selections from the portfolio summary.
+[!NOTE]
+Dashboard pages can contain different active selections. For example, the supplied Premium & Protection view uses a 20–25-year tenure range, while Premium Performance selects Payable in 10 Years. Totals should therefore be interpreted within each page's filter context.
 
-## Executive snapshot
+🧭 Executive Snapshot
 
-The project combines **seven CSV source tables**, a policy fact table and supporting customer, product and management dimensions. Its six-page report explores policy mix, premium measures and the sales hierarchy.
+This project connects seven CSV source tables into a Power BI model that analyzes policy activity, product mix, premium exposure, geography and the sales hierarchy. The solution is designed to help management move from isolated operational records to a consistent portfolio-level view.
 
-Three findings frame the case study:
+The analysis answers four practical questions:
 
-- **The portfolio is concentrated.** Two protection plans represent **55.63%** of all records; three states account for **33.71%** of active modeled annual premium.
-- **Premium definitions matter.** Active modeled lifetime premium totals **$459.96m**, of which **27.33%** is modeled as paid. The remaining amount includes future tenure and is not an overdue balance.
-- **Data quality changes the interpretation.** **76.30%** of all records lack Region. That issue limits regional reporting even though the primary dimension identifiers reconcile.
+How is the portfolio distributed across policy statuses and protection plans?
 
-The detailed [management report](Business Report/insurance-portfolio-business-report.pdf) explains the calculations, supporting evidence and recommended controls.
+Which states and products account for the largest premium concentration?
 
-## Business problem
+How do modeled paid and remaining premium relate to total lifetime premium?
 
-Policy data, customer attributes, product definitions and sales assignments sit in separate source files. A useful management view needs to connect them while keeping policy counts, premium frequency, lifetime amounts and status filters consistent.
+Which data-quality and calculation issues should be resolved before operational use?
 
-This project addresses four practical questions:
+Three findings frame the management story:
 
-1. How is the portfolio distributed across policy statuses and protection plans?
-2. Which segments account for the most modeled annual premium?
-3. How do modeled paid and remaining premium relate to lifetime premium?
-4. Which data and calculation issues must be resolved before operational use?
+Portfolio concentration: two protection plans represent 55.63% of all records.
 
-This is an **insurance portfolio analytics** case study. The supplied materials do not contain advertising spend, campaign performance or marketing attribution data.
+Premium concentration: Minnesota, Wisconsin and New Jersey account for 33.71% of active modeled annual premium.
 
-## Key insights
+Reporting constraint: 76.30% of all records have a blank Region value, limiting regional analysis.
 
-| Finding | Verified evidence | Business interpretation |
-|---|---|---|
-| Active records dominate the snapshot | **7,332 / 10,000 records — 73.32%** | Establishes portfolio status mix; it is not a retention rate. |
-| Two plans carry most records | ULIP Growth Plan **3,205**; Life Assurance **2,358** | Start product-level data and service reviews with the largest segments. |
-| Active annual premium is concentrated | Minnesota **$3.21m**, Wisconsin **$2.82m**, New Jersey **$2.54m** | Together, **33.71%** of the active total; describes the project portfolio, not wider market demand. |
-| Most modeled lifetime premium remains | **$334.24m**, or **72.67%**, in active records | Future-tenure exposure should be separated from actual collections and arrears. |
-| Status concentration needs validation | All **107 lapsed** and **37 claimed** records are assigned to Indiana | Check source segmentation before drawing geographic conclusions. |
+For calculations, supporting evidence and page-by-page dashboard explanations, see the full business report.
 
-*Product and status counts use all records. Premium findings use active records. Rounded amounts are for readability; shares are calculated from unrounded totals.*
+🏢 Business Problem
 
-## Recommendations
+Policy, customer, product, agent and manager information is stored across separate files. Without a connected analytical model, management cannot easily compare portfolio status, premium exposure, protection plans, locations and sales assignments using the same definitions and filter context.
 
-**1. Repair regional coverage first.** Trim split state tokens, rebuild the state-to-region join and reconcile assignments. Region is blank for **7,630 records**, including **5,576 active records**.
+The project addresses this gap by combining the source tables into a reusable semantic model and presenting the results through an executive-friendly six-page dashboard. It also distinguishes descriptive portfolio findings from measures that require additional business-rule or source-system validation.
 
-**2. Make KPI definitions explicit.** Distinguish fact rows, distinct policy numbers and customers. Label paid and remaining premiums as modeled values until transaction data is available.
+<a id="key-insights"></a>
 
-**3. Reconcile return logic before using it.** Review premium thresholds, product-name conditions and maturity assumptions. Maturity, profit and ROI are excluded from the headline findings because the inspected formulas need correction.
+💡 Key Insights
 
-**4. Validate the final delivery.** Test refresh, filters, navigation and security roles in Power BI Desktop. The supplied dashboard PDF documents the captured views.
+✅ Active policies dominate the stored portfolio
 
-These are recommendations from the review—not completed business interventions or evidence of improved revenue.
+The dataset contains 7,332 active records out of 10,000, equal to 73.32% of all rows. This describes the recorded status mix; it should not be interpreted as a customer-retention rate.
 
-## Technical implementation
+🛡️ Two protection plans carry most records
 
-### Data preparation and modeling
+ULIP Growth Plan contains 3,205 records, while Life Assurance contains 2,358. Together they account for 55.63% of the portfolio, making them the clearest starting point for product-level service and data reviews.
 
-- **Seven CSV sources:** policy records, customers, agents, protection plans, policy types, regional managers and zonal managers.
-- **Nine Power Query tables:** the seven sources plus derived hierarchy and region tables.
-- **Eight business relationships:** six fact-to-dimension links, a hierarchy-to-manager link and a fact-to-region link; this count excludes automatic date structures.
-- **11 explicit measures**, supported by calculated columns for premium, duration and related indicators.
-- Report definitions include slicers, field parameters and bookmark-controlled hierarchy views.
+📍 Active annual premium is geographically concentrated
 
-The six primary dimension keys are unique, and their fact-table foreign keys have no unmatched non-null values in the inspected snapshot. The separate state-based regional join remains incomplete.
+State
 
-### Premium logic
+Active modeled annual premium
 
-| Indicator | Model calculation |
-|---|---|
-| Annual premium | Source premium × payment-frequency factor |
-| Lifetime premium | Annual premium × tenure |
-| Payment duration | Year-boundary difference between Start Date and Last Paid Date |
-| Modeled premium paid | Annual premium × payment duration |
-| Modeled remaining premium | Lifetime premium − modeled premium paid |
-| Paid share | Total modeled paid premium ÷ total modeled lifetime premium |
+Portfolio interpretation
 
-The source files supply USD monetary amounts. Coverage, premium, loan allowance and underwriting amounts serve different analytical purposes; the report keeps their definitions separate. Headline premium figures are independently aggregated from the stored model.
+Minnesota
 
-### Report design
+$3.21M
 
-The revised definitions use navy navigation, teal accents, a light canvas, white cards and darker text. The design retains the six-page structure while standardizing KPI treatments, slicers and navigation. The supplied PDF shows the rendered report pages. Interactive behavior and refresh were not tested in this review.
+Largest state-level amount in the active portfolio
 
-### What this case study demonstrates
+Wisconsin
 
-The materials show work across source preparation, model relationships, DAX, report design and analytical validation. The business value is a clearer view of portfolio composition and premium assumptions, together with an explicit account of where the model needs correction. No measured commercial uplift is claimed.
+$2.82M
 
-## Documentation
+Second-largest active annual-premium contribution
 
-| Resource | Contents |
-|---|---|
-| [Management and technical report](Business Report/insurance-portfolio-business-report.pdf) | Fourteen-page report with numbered contents, exact totals, findings, KPI definitions, all six dashboard screenshots with page-by-page explanations, limitations and recommended actions. |
-| [Analytical summary](Img/portfolio-insights.png) | Verified status distribution and active premium concentration. |
+New Jersey
 
-[Dashboard PDF](Dashboard Pdf/insurance_dashboard.pdf) contains the six supplied report pages.
+$2.54M
 
-## Limitations
+Third-largest active annual-premium contribution
 
-- **Dataset coverage:** the portfolio includes 22 U.S. states; representativeness of the broader market has not been established.
-- **Static snapshot:** purchase dates span **July 24, 2015–July 23, 2025**. The report is not a live service deployment.
-- **Unconfirmed policy grain:** **10,000 rows** contain **9,938 distinct policy numbers**. Repeated IDs require explanation before deduplication or unique-policy reporting.
-- **Incomplete Region:** **76.30%** of rows are blank after the state-based join.
-- **Financial assumptions:** modeled paid amounts are not verified collections; return formulas need business-rule validation.
-- **Security and delivery:** manager-role expressions require correction and role tests. The exported views were inspected; refresh and interactive behavior were not tested.
-- **No outcome attribution:** there is no evidence of revenue uplift, claim profitability, employee performance improvement or advertising effectiveness.
+Top three combined
 
-## Repository structure
+33.71%
 
-```text
+Share of total active modeled annual premium
+
+These results describe the project dataset and do not establish broader insurance-market demand.
+
+💰 Most modeled lifetime premium remains payable
+
+Active modeled lifetime premium totals $459.96M. Of this amount, $125.72M, or 27.33%, is modeled as paid and $334.24M, or 72.67%, remains. The remaining amount includes future policy tenure and is not an overdue balance.
+
+🔎 Geographic status concentration requires validation
+
+All 107 lapsed and 37 claimed records are assigned to Indiana in the inspected snapshot. This may reflect the source population or a data assignment issue, so it should be validated before geographic conclusions are used operationally.
+
+<p align="center">
+  <img src="Img/portfolio-insights.png" alt="Insurance portfolio analytical summary" width="860">
+</p>
+
+<a id="business-recommendations"></a>
+
+🎯 Business Recommendations
+
+Priority
+
+Recommended action
+
+Management purpose
+
+1 — Regional data quality
+
+Standardize state values, rebuild the state-to-region mapping and reconcile blank assignments.
+
+Restore confidence in regional and management-hierarchy reporting.
+
+2 — KPI governance
+
+Define fact rows, distinct policy numbers and customers separately in the report glossary.
+
+Prevent different audiences from interpreting the same KPI differently.
+
+3 — Premium definitions
+
+Keep modeled paid, remaining and lifetime premium clearly labeled and separate from transaction-level collections.
+
+Avoid treating future policy value as cash received or overdue.
+
+4 — Return logic
+
+Review premium thresholds, product-name conditions and maturity assumptions before using ROI, profit or maturity outputs.
+
+Ensure financial indicators follow approved business rules.
+
+5 — Delivery testing
+
+Validate refresh, filters, navigation, relationships and security roles in Power BI Desktop.
+
+Confirm that the analytical experience works as designed after deployment.
+
+These recommendations come from the analytical review. They are not completed interventions and do not represent measured revenue or performance improvements.
+
+🧠 Analytical Approach
+
+The project combines source preparation, semantic modeling, DAX calculations, dashboard design and analytical validation.
+
+flowchart LR
+    A["📄 7 CSV Sources"] --> B["⚙️ Power Query"]
+    B --> C["🧠 Semantic Model"]
+    C --> D["📐 DAX Measures"]
+    D --> E["📊 6 Dashboard Pages"]
+    E --> F["🎯 Management Review"]
+
+Model layer
+
+Role in the solution
+
+Verified detail
+
+Fact table
+
+Stores policy-level records and analytical amounts
+
+10,000 rows and 9,938 distinct policy numbers
+
+Customer dimension
+
+Adds policyholder and demographic attributes
+
+Linked to the policy fact table
+
+Product dimensions
+
+Define policy type and protection-plan attributes
+
+Primary keys are unique in the inspected snapshot
+
+Sales dimensions
+
+Organize agent, regional-manager and zonal-manager assignments
+
+Used by the hierarchy reporting page
+
+Derived tables
+
+Support hierarchy and region analysis
+
+Region mapping remains incomplete
+
+Measures
+
+Provide reusable portfolio and premium KPIs
+
+11 explicit measures were identified
+
+<a id="technical-implementation"></a>
+
+⚙️ Technical Implementation
+
+Data preparation and modeling
+
+Seven CSV sources: policy records, customers, agents, protection plans, policy types, regional managers and zonal managers
+
+Nine Power Query tables: the seven sources plus derived hierarchy and region tables
+
+Eight business relationships: six fact-to-dimension links, one hierarchy-to-manager link and one fact-to-region link
+
+11 explicit measures: supported by calculated columns for premium, duration and related indicators
+
+Interactive report design: slicers, field parameters, filters and bookmark-controlled hierarchy views
+
+The six primary dimension keys are unique, and their corresponding fact-table foreign keys have no unmatched non-null values in the inspected snapshot. The separate state-based regional join remains incomplete.
+
+Premium calculation framework
+
+Indicator
+
+Model calculation
+
+Annual premium
+
+Source premium × payment-frequency factor
+
+Lifetime premium
+
+Annual premium × tenure
+
+Payment duration
+
+Year-boundary difference between Start Date and Last Paid Date
+
+Modeled premium paid
+
+Annual premium × payment duration
+
+Modeled remaining premium
+
+Lifetime premium − modeled premium paid
+
+Paid share
+
+Total modeled paid premium ÷ total modeled lifetime premium
+
+The source files contain USD monetary amounts. Coverage, premium, loan allowance and underwriting amounts represent different business concepts and are kept separate in the analysis.
+
+Dashboard design system
+
+The dashboard uses a light analytical canvas, navy navigation, teal accents, white KPI cards and darker text for improved contrast. The six pages follow a shared visual system for spacing, headings, filters and navigation while preserving their individual analytical purpose.
+
+🖥️ Dashboard Capabilities
+
+Portfolio-level KPI cards and policy-detail reporting
+
+Status, protection-plan, occupation and geographic analysis
+
+Annual, lifetime, paid and remaining premium views
+
+Tenure, policy type, policy name, state, year and agent filtering
+
+Agent-to-manager sales-hierarchy exploration
+
+Bookmark-controlled hierarchy views and consistent page navigation
+
+Six-page static dashboard export for portfolio presentation
+
+💼 Project Value
+
+This project demonstrates the ability to:
+
+Translate an insurance-management problem into measurable analytical questions
+
+Prepare and connect fact and dimension data with Power Query
+
+Build reusable DAX measures and calculated business indicators
+
+Design a cohesive, executive-level Power BI dashboard
+
+Validate relationships, keys, filter context and KPI definitions
+
+Convert descriptive findings into practical management recommendations
+
+Document a BI solution for both business and technical audiences
+
+📚 Project Documentation
+
+Resource
+
+Description
+
+Link
+
+Dashboard PDF
+
+Static export of all six dashboard pages
+
+Open dashboard
+
+Business report
+
+Detailed management report covering purpose, data, KPIs, findings, page explanations, technical approach, recommendations and limitations
+
+Open report
+
+Source datasets
+
+Seven CSV files used by the portfolio model
+
+Browse datasets
+
+⚠️ Interpretation and Limitations
+
+The portfolio contains records from 22 U.S. states; broader market representativeness has not been established.
+
+Purchase dates range from July 24, 2015 to July 23, 2025. The repository represents a static analytical snapshot.
+
+The 10,000 fact rows contain 9,938 distinct policy numbers. Repeated identifiers require explanation before deduplication or unique-policy reporting.
+
+Region is blank for 7,630 records, including 5,576 active records, after the current state-based join.
+
+Modeled premium paid is not a verified collections total, and remaining premium is not equivalent to arrears.
+
+Maturity, profit and ROI logic requires business-rule validation before it is used for management decisions.
+
+The supplied report export was reviewed; interactive refresh, navigation and security-role behavior require final testing in Power BI Desktop.
+
+The analysis does not establish revenue uplift, claim profitability, employee-performance improvement or causal relationships.
+
+📁 Repository Structure
+
 Insurance Analysis/
 ├── README.md
 ├── Dataset/
@@ -176,8 +424,13 @@ Insurance Analysis/
         ├── page-4.png
         ├── page-5.png
         └── page-6.png
-```
 
-## Author and contact
+<div align="center">
 
-For project discussion, use the repository owner's GitHub profile. No unverified contact details or credentials are included here.
+Insurance Portfolio Intelligence
+
+From policy-level data to clear portfolio decisions
+
+<sub>Power BI · Power Query · DAX · Data Modeling · Insurance Analytics · Business Intelligence</sub>
+
+</div>
