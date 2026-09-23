@@ -73,9 +73,6 @@ The dashboard presents six connected analytical views. Each page answers a diffe
   <a href="Dashboard%20Pdf/insurance_dashboard.pdf"><strong>Open the complete six-page dashboard PDF →</strong></a>
 </p>
 
-> [!NOTE]
-> Dashboard pages can contain different active selections. For example, the supplied Premium &amp; Protection view uses a 20–25-year tenure range, while Premium Performance selects **Payable in 10 Years**. Totals should therefore be interpreted within each page's filter context.
-
 ## 🧭 Executive Snapshot
 
 This project connects **seven CSV source tables** into a Power BI model that analyzes policy activity, product mix, premium exposure, geography and the sales hierarchy. The solution is designed to help management move from isolated operational records to a consistent portfolio-level view.
@@ -142,11 +139,11 @@ All **107 lapsed** and **37 claimed** records are assigned to Indiana in the ins
 
 | Priority | Recommended action | Management purpose |
 |---|---|---|
-| **1 — Regional data quality** | Standardize state values, rebuild the state-to-region mapping and reconcile blank assignments. | Restore confidence in regional and management-hierarchy reporting. |
-| **2 — KPI governance** | Define fact rows, distinct policy numbers and customers separately in the report glossary. | Prevent different audiences from interpreting the same KPI differently. |
-| **3 — Premium definitions** | Keep modeled paid, remaining and lifetime premium clearly labeled and separate from transaction-level collections. | Avoid treating future policy value as cash received or overdue. |
-| **4 — Return logic** | Review premium thresholds, product-name conditions and maturity assumptions before using ROI, profit or maturity outputs. | Ensure financial indicators follow approved business rules. |
-| **5 — Delivery testing** | Validate refresh, filters, navigation, relationships and security roles in Power BI Desktop. | Confirm that the analytical experience works as designed after deployment. |
+| **1. Regional data quality** | Standardize state values, rebuild the state-to-region mapping and reconcile blank assignments. | Restore confidence in regional and management-hierarchy reporting. |
+| **2. KPI governance** | Define fact rows, distinct policy numbers and customers separately in the report glossary. | Prevent different audiences from interpreting the same KPI differently. |
+| **3. Premium definitions** | Keep modeled paid, remaining and lifetime premium clearly labeled and separate from transaction-level collections. | Avoid treating future policy value as cash received or overdue. |
+| **4. Return logic** | Review premium thresholds, product-name conditions and maturity assumptions before using ROI, profit or maturity outputs. | Ensure financial indicators follow approved business rules. |
+| **5. Delivery testing** | Validate refresh, filters, navigation, relationships and security roles in Power BI Desktop. | Confirm that the analytical experience works as designed after deployment. |
 
 These recommendations come from the analytical review. They are not completed interventions and do not represent measured revenue or performance improvements.
 
@@ -225,6 +222,33 @@ This project demonstrates the ability to:
 - Convert descriptive findings into practical management recommendations
 - Document a BI solution for both business and technical audiences
 
+
+## 🧪 Python, SQL and Analysis Extensions
+
+The repository includes additional analysis that extends the Power BI dashboard without replacing it. These files add reproducible validation, business questions, and practical entry-level Python analysis using the same insurance portfolio data.
+
+### Python analysis
+
+[`Python/insurance_python_analysis.py`](Python/insurance_python_analysis.py) contains 15 business questions using **Pandas, NumPy, Matplotlib, and Seaborn**. 
+
+The Python questions cover portfolio status and premium, protection-plan/state concentration, age/smoker/payment frequency/tenure, paid vs. lifetime premium, claim ID coverage and underwriting expense, loan eligibility and sales-agent responsibility, purchase-year trends, and repeated policy-number checks.
+
+Generated charts and results are stored in [`Python/python_visual_outputs/`](Python/python_visual_outputs/). The folder contains 15 PNG visualizations and `15_python_results.csv`. The combined report is available at [`Python/Sql&Python Analysis Report.pdf`](Python/Sql%26Python%20Analysis%20Report.pdf).
+
+### SQL KPI validation
+
+[`Sql/insurance_kpi_validation.sql`](Sql/insurance_kpi_validation.sql) contains 10 PostgreSQL questions that recalculate the dashboard's key numbers, including policy records, distinct policies, active records, annual premium, lifetime premium, modeled paid premium, paid share, plan concentration, and state concentration.
+
+These queries provide a control layer for the dashboard. If a result differs from the visual report, review filters, duplicate policy numbers, premium annualization, date logic, and the active-status definition.
+
+### Additional SQL business insights
+
+[`Sql/insurance_business_insights.sql`](Sql/insurance_business_insights.sql) contains 10 additional PostgreSQL questions beyond the dashboard KPIs. These explore lapse and claim patterns, premium per record, payment frequency, policy type, smoker status, agent portfolios, purchase-year cohorts, regional completeness, and data-quality warnings.
+
+### Analysis documentation
+
+The analysis methods, findings, visual explanations, SQL questions, and business implications are summarized in [`Python/Sql&Python Analysis Report.pdf`](Python/Sql%26Python%20Analysis%20Report.pdf).
+
 ## 📚 Project Documentation
 
 | Resource | Description | Link |
@@ -261,6 +285,14 @@ Insurance Analysis/
 │   └── insurance_dashboard.pdf
 ├── Business Report/
 │   └── insurance-portfolio-business-report.pdf
+├── Python/
+│   ├── insurance_python_analysis.py
+│   ├── 15_python_results.csv
+│   ├── Sql&Python Analysis Report.pdf
+│   └── python_visual_outputs/
+└── Sql/
+    ├── insurance_kpi_validation.sql
+    └── insurance_business_insights.sql
 └── Img/
     ├── hero.svg
     ├── portfolio-insights.png
